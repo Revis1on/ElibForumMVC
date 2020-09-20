@@ -9,5 +9,6 @@ namespace ElibForumMVC.Models.Forum
         public IEnumerable<PostListingModel> Post { get; set; }
 
         public string SearchQuery { get; set; }
+        public object Posts { get; internal set; }
     }
 }

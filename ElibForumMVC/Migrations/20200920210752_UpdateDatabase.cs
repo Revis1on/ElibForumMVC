@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ElibForumMVC.Data.Migrations
+namespace ElibForumMVC.Migrations
 {
-    public partial class InitialDatabase : Migration
+    public partial class UpdateDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ElibForumMVC.Data.Migrations
+namespace ElibForumMVC.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200919220243_Initial Database")]
-    partial class InitialDatabase
+    [DbContext(typeof(AplicationDbContext))]
+    [Migration("20200920210752_UpdateDatabase")]
+    partial class UpdateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -4,16 +4,14 @@ using ElibForumMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ElibForumMVC.Data.Migrations
+namespace ElibForumMVC.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200920134037_db-update")]
-    partial class dbupdate
+    [DbContext(typeof(AplicationDbContext))]
+    partial class AplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
