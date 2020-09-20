@@ -1,17 +1,18 @@
-﻿using ElibForumMVC.Data;
-using ElibForumMVC.Data.Models;
-using ElibForumMVC.Models;
-using ElibForumMVC.Models.Forum;
-using ElibForumMVC.Models.Home;
-using ElibForumMVC.Models.Post;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using System.Linq;
+using ElibForumMVC.Models.Forum;
+using ElibForumMVC.Models.Post;
+using ElibForumMVC.Models.Home;
+using ElibForumMVC.Data.Models;
+using ElibForumMVC.Data;
+using ElibForumMVC.Models;
 
 namespace ElibForumMVC.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly IPost _postService;
 
         public HomeController(IPost postService)
@@ -22,7 +23,6 @@ namespace ElibForumMVC.Controllers
         public IActionResult Index()
         {
             var model = BuildHomeIndexModel();
-
             return View(model);
         }
 
@@ -32,7 +32,7 @@ namespace ElibForumMVC.Controllers
 
             var posts = latestPosts.Select(post => new PostListingModel
             {
-                Id = post.Id,
+                id = post.Id,
                 Title = post.Title,
                 AuthorName = post.User.UserName,
                 AuthorId = post.User.Id,
@@ -52,28 +52,21 @@ namespace ElibForumMVC.Controllers
         private ForumListingModel GetForumListingForPost(Post post)
         {
             var forum = post.Forum;
+
             return new ForumListingModel
             {
                 Id = forum.Id,
-                Name = forum.Title,
+                Title = forum.Title,
                 ImageUrl = forum.ImageUrl
             };
         }
 
-        public IActionResult About()
+        public IActionResult Privacy()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

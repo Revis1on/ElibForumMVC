@@ -2,6 +2,7 @@
 {
     public class NewPostModel
     {
+
         public string ForumName { get; set; }
         public int ForumId { get; set; }
         public string AuthorName { get; set; }
