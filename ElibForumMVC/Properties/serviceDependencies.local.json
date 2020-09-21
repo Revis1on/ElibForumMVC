@@ -4,10 +4,6 @@
       "type": "mssql.local",
       "connectionId": "DefaultConnection"
     },
-    "mssql2": {
-      "type": "mssql.local",
-      "connectionId": "ElibForumMVCContextConnection"
-    },
     "mssql3": {
       "type": "mssql.local",
       "connectionId": "AplicationDbContextConnection"

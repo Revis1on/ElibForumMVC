@@ -20,7 +20,7 @@ namespace ElibForumMVC.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AplicationDbContextConnection")));
 
-                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<AplicationDbContext>();
             });
         }
