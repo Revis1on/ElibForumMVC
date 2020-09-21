@@ -7,13 +7,9 @@
 
   <ItemGroup>
     <Compile Remove="Services\**" />
-    <Compile Remove="Views\Profile\**" />
     <Content Remove="Services\**" />
-    <Content Remove="Views\Profile\**" />
     <EmbeddedResource Remove="Services\**" />
-    <EmbeddedResource Remove="Views\Profile\**" />
     <None Remove="Services\**" />
-    <None Remove="Views\Profile\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,10 +67,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ElibForumMVC.Data\ElibForumMVC.Data.csproj" />
     <ProjectReference Include="..\ElibForumMVC.Services\ElibForumMVC.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\ApplicationUser\" />
   </ItemGroup>
 
 </Project>
