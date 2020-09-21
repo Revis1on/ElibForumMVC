@@ -13,12 +13,12 @@
 }
 
 .navLogo {
-    background-image: url("/images/app-logo-b.svg");
+    background-image: url("/images/logo_transparent.png");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     padding-right: 16px;
-    width: 150px;
+    width: 180px;
     margin-right: 12px;
 }
 

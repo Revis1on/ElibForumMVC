@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Е-Книготека</title>
+    <title>@ViewData["Title"]Е-Книготека</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -32,7 +32,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Forum" asp-action="Index">Forum</a></li>
+                    <li><a asp-area="" asp-controller="Forum" asp-action="Index">Форум</a></li>
                     @if(SignInManager.IsSignedIn(User))
                     {
                         <li class="dropdown">
@@ -42,19 +42,19 @@
                                role="button" 
                                area-haspopup="true" 
                                area-expanded="false"
-                               >Settings<span class="caret"></span>                            
+                               >Опции<span class="caret"></span>                            
                             </a>  
                             <ul class="dropdown-menu">
                                 <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Profile</li>
+                                <li class="dropdown-header">Профил</li>
                                 <li><a asp-controller="Profile" asp-action="Detail">Moj Профил</a></li>
 
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <li role="separator" class="divider"></li>
-                                    <li class="dropdown-header">Admin</li>
-                                    <li><a asp-controller="Forum" asp-action="Create">Create Forum</a></li>
-                                    <li><a asp-controller="Profile" asp-action="Index">View Users</a></li>
+                                    <li class="dropdown-header">Админ</li>
+                                    <li><a asp-controller="Forum" asp-action="Create">Направи Форум</a></li>
+                                    <li><a asp-controller="Profile" asp-action="Index">Види Корисници</a></li>
                                 }
 
                             </ul>
