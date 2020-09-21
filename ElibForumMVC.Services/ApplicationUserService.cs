@@ -2,22 +2,29 @@
 using ElibForumMVC.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Policy;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ElibForumMVC.Services
 {
     class ApplicationUserService : IApplicationUser
     {
+
+        private readonly AplicationDbContext _context;
+        public ApplicationUserService(AplicationDbContext context)
+        {
+            context = _context;
+        }
+
         public IEnumerable<ApplicationUser> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.ApplicationUsers;
         }
 
         public ApplicationUser GetById(string id)
         {
-            throw new NotImplementedException();
+           return GetAll().FirstOrDefault(user => user.Id == id);
         }
 
         public Task IncrementRating(string id, Type type)
@@ -25,9 +32,12 @@ namespace ElibForumMVC.Services
             throw new NotImplementedException();
         }
 
-        public Task SetProfileImage(string id, Url url)
+        public async Task  SetProfileImage(string id, Url uri)
         {
-            throw new NotImplementedException();
+            var user = GetById(id);
+            user.ProfileImageUrl = uri.AbsoluteUri;
+            _context.Update(user);
+            await _context.SaveChangesAsync();
         }
     }
 }
