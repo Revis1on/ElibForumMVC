@@ -7,7 +7,7 @@ namespace ElibForumMVC.Data
     public interface IPost
     {
         Post getById(int id);
-        IEnumerable<Post> getAll();
+        IEnumerable<Post> GetAll();
         IEnumerable<Post> getFilteredPosts(Forum forum, string searchQuery);
         IEnumerable<Post> getFilteredPosts(string searchQuery);
         IEnumerable<Post> getPostByForum(int id);

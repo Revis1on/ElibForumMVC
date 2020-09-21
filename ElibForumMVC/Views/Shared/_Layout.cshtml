@@ -23,13 +23,13 @@
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">E-Книготека</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav mr-auto float-right">
                         <li><a class="nav-link text-dark" asp-area="" asp-controller="Forum" asp-action="Index">Форум</a></li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="dropdown">
                                 <a href="#"
-                                   class="dropdown-toggle"
+                                   class="dropdown-toggle nav-link text-dark"
                                    data-toggle="dropdown"
                                    role="button"
                                    area-haspopup="true"
@@ -39,7 +39,7 @@
                                 <ul class="dropdown-menu">
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">Профил</li>
-                                    <li><a asp-controller="Profile" asp-action="Detail">Moj Профил</a></li>
+                                    <li><a class="nav-link text-dark align-content-center" asp-controller="Profile" asp-action="Detail">Moj Профил</a></li>
 
                                     @if (User.IsInRole("Admin"))
                                     {
@@ -56,7 +56,7 @@
                    
                     @if (!SignInManager.IsSignedIn(User))
                     {
-                <ul class="nav navbar-nav float-right">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Најава</a>
                     </li>
@@ -71,8 +71,8 @@
                     {
                         <form asp-controller="Account" asp-action="Logout" method="post" id="logoutFOrm" class="navbar-right">
                             <ul class="nav navbar-nav navbar-right">
-                                <li>Здраво , @UserManager.GetUserName(User)</li>
-                                <li><a asp-area="Identity" asp-page="/Account/Logout">Одјава</a></li>
+                                <li class="nav-link text-dark" >Здраво , @UserManager.GetUserName(User)</li>
+                                <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Logout">Одјава</a></li>
                             </ul>
                         </form>
                     }

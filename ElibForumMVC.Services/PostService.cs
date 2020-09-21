@@ -37,7 +37,7 @@ namespace ElibForumMVC.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Post> getAll()
+        public IEnumerable<Post> GetAll()
         {
             return _context.Posts
             .Include(post => post.User)
@@ -60,19 +60,19 @@ namespace ElibForumMVC.Services
           forum.Posts :
           forum.Posts.
           Where(post => post.Title.Contains(searchQuery)
-          | post.Content.Contains(searchQuery));
+          || post.Content.Contains(searchQuery));
         }
 
         public IEnumerable<Post> getFilteredPosts(string searchQuery)
         {
-            return getAll().Where(post
-               => post.Title.ToLower().Contains(searchQuery.ToLower())
-               || post.Content.ToLower().Contains(searchQuery.ToLower()));
+            return GetAll().Where(post
+               => !(!post.Title.ToLower().Contains(searchQuery.ToLower())
+               ||!post.Content.ToLower().Contains(searchQuery.ToLower())));
         }
 
         public IEnumerable<Post> GetLatestPosts(int n)
         {
-            return getAll().OrderByDescending(post => post.Created).Take(n);
+            return GetAll().OrderByDescending(post => post.Created).Take(n);
         }
 
         public IEnumerable<Post> getPostByForum(int id)

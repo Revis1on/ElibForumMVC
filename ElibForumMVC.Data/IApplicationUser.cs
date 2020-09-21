@@ -13,7 +13,7 @@ namespace ElibForumMVC.Data
         IEnumerable<ApplicationUser> GetAll();
 
 
-        Task SetProfileImage(string id, Url uri);
+        Task SetProfileImage(string id, Uri uri);
         Task IncrementRating(string id, Type type);
 
     }

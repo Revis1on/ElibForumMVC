@@ -3,7 +3,6 @@ using ElibForumMVC.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace ElibForumMVC.Services
@@ -32,7 +31,7 @@ namespace ElibForumMVC.Services
             throw new NotImplementedException();
         }
 
-        public async Task  SetProfileImage(string id, Url uri)
+        public async Task  SetProfileImage(string id, Uri uri)
         {
             var user = GetById(id);
             user.ProfileImageUrl = uri.AbsoluteUri;
