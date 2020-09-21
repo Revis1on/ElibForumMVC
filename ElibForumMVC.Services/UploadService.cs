@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ElibForumMVC.Services
 {
-    class UploadService : IUpload
+    public class UploadService : IUpload
     {
     }
 

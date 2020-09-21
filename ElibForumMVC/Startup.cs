@@ -25,6 +25,7 @@ namespace ElibForumMVC
             services.AddRazorPages();
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
+            services.AddScoped<IUpload, UploadService>();
             services.AddTransient<DataSeeder>();
         }
 

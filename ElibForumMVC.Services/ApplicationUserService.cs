@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElibForumMVC.Services
 {
-    class ApplicationUserService : IApplicationUser
+     public class ApplicationUserService : IApplicationUser
     {
 
         private readonly AplicationDbContext _context;
