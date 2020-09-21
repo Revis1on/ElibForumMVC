@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElibForumMVC.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20200920210752_UpdateDatabase")]
-    partial class UpdateDatabase
+    [Migration("20200921084025_new db")]
+    partial class newdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

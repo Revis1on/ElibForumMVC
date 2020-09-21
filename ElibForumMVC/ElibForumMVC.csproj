@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200920215055_new db.cs" />
-    <Compile Remove="Migrations\20200920215055_new db.Designer.cs" />
-    <Compile Remove="Migrations\20200920222244_db.cs" />
-    <Compile Remove="Migrations\20200920222244_db.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Views\Forum\Index.cshtml" />
     <None Include="Views\Forum\Topic.cshtml" />
     <None Include="Views\Home\About.cshtml" />
@@ -61,12 +54,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ElibForumMVC.Data\ElibForumMVC.Data.csproj" />
+    <ProjectReference Include="..\ElibForumMVC.Services\ElibForumMVC.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\ApplicationUser\" />
+    <Folder Include="Services\" />
     <Folder Include="Views\Profile\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
 
 </Project>

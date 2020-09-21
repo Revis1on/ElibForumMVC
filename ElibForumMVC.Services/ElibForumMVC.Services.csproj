@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ElibForumMVC.Data\ElibForumMVC.Data.csproj" />
-    <ProjectReference Include="..\ElibForumMVC\ElibForumMVC.csproj" />
   </ItemGroup>
 
 </Project>
