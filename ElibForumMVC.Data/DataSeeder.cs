@@ -29,9 +29,9 @@ namespace ElibForumMVC.Data
             {
 
                 UserName = "ForumAdmin",
-                NormalizedUserName = "forumadmin",
+                NormalizedUserName = "FORUMADMIN",
                 Email = "admin@elibforum.com",
-                NormalizedEmail = "admin@elibforum.com",
+                NormalizedEmail = "ADMIN@ELIBFORUM.COM",
                 EmailConfirmed = true,
                 LockoutEnabled = false,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -49,7 +49,7 @@ namespace ElibForumMVC.Data
 
             if (!hasAdminRole)
             {
-                roleStore.CreateAsync(new IdentityRole { Name = "Admin", NormalizedName = "admin" });
+                roleStore.CreateAsync(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
             }
 
             var hasSuperUser = _context.Users.Any(u => u.NormalizedUserName == user.UserName);
