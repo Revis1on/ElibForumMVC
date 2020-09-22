@@ -39,7 +39,7 @@
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-header text-dark">Кориснички Панел</li>
                                     <li role="separator" class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="Detail">Moj Профил</a></li>
+                                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Moj Профил</a></li>
 
                                     @if (User.IsInRole("Admin"))
                                     {

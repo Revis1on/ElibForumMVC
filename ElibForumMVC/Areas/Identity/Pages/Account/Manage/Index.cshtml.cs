@@ -34,7 +34,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Телефонски број")]
             public string PhoneNumber { get; set; }
         }
 
@@ -89,7 +89,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Промените беа зачувани";
             return RedirectToPage();
         }
     }

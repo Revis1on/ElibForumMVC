@@ -46,7 +46,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "New email")]
+            [Display(Name = "Нова е-пошта")]
             public string NewEmail { get; set; }
         }
 
@@ -108,7 +108,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your email is unchanged.";
+            StatusMessage = "Промената е зачувана.";
             return RedirectToPage();
         }
 
