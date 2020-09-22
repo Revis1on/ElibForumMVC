@@ -11,7 +11,7 @@
         <form id="email-form" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Email"></label>
+                <label asp-for="Email">Е-пошта</label>
                 @if (Model.IsEmailConfirmed)
                 {
                     <div class="input-group">
@@ -24,7 +24,7 @@
                  else
                 {
                     <input asp-for="Email" class="form-control" disabled />
-                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Испрати линк за верификација</button>
                 }
             </div>
             <div class="form-group">
