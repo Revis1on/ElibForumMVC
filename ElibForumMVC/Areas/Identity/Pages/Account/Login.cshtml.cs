@@ -44,7 +44,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "Корисничко Име или Емаил")]
+            [Display(Name = "Корисничко име или е-пошта")]
             public string UserName { get; set; }
 
             [Required]
@@ -52,7 +52,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Запамти ?")]
+            [Display(Name = "Запомни ја лозинката")]
             public bool RememberMe { get; set; }
         }
 

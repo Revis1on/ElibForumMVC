@@ -24,7 +24,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav mr-auto float-right">
-                        <li><a class="nav-link text-dark" asp-area="" asp-controller="Forum" asp-action="Index">Форум</a></li>
+                        <li><a class="nav-item active nav-link" asp-area="" asp-controller="Forum" asp-action="Index">Форум</a></li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="dropdown">
@@ -37,16 +37,17 @@
                                     Опции<span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li role="separator" class="divider"></li>
-                                    <li class="dropdown-header">Профил</li>
-                                    <li><a class="nav-link text-dark align-content-center" asp-controller="Profile" asp-action="Detail">Moj Профил</a></li>
+                                    <li class="dropdown-header text-dark">Кориснички Панел</li>
+                                    <li role="separator" class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="Detail">Moj Профил</a></li>
 
                                     @if (User.IsInRole("Admin"))
                                     {
-                                        <li role="separator" class="divider"></li>
-                                        <li class="dropdown-header">Админ</li>
-                                        <li><a asp-controller="Forum" asp-action="Create">Направи Форум</a></li>
-                                        <li><a asp-controller="Profile" asp-action="Index">Види Корисници</a></li>
+                                    <li role="separator" class="dropdown-divider"></li>
+                                    <li class="dropdown-header text-dark">Админ Панел</li>
+                                    <li role="separator" class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-controller="Forum" asp-action="Create">Направи Форум</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index">Види Корисници</a></li>
                                     }
 
                                 </ul>

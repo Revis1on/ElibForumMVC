@@ -48,7 +48,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "Емаил")]
+            [Display(Name = "Е-пошта")]
             public string Email { get; set; }
 
             [Required]
