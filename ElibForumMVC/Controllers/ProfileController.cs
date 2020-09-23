@@ -2,8 +2,12 @@
 using ElibForumMVC.Data;
 using ElibForumMVC.Data.Models;
 using ElibForumMVC.Models.ApplicationUser;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace ElibForumMVC.Controllers
 {
@@ -13,11 +17,13 @@ namespace ElibForumMVC.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IApplicationUser _userService;
         private readonly IUpload  _uploadService;
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService)
+        private readonly IConfiguration _configuration;
+        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService, IConfiguration configuration)
         {
             _userManager = userManager;
             _userService = userService;
             _uploadService = uploadService;
+            _configuration = configuration;
              
 
         }
@@ -42,6 +48,29 @@ namespace ElibForumMVC.Controllers
 
 
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfileImage(IFormFile file)
+        {
+
+            var userId = _userManager.GetUserId(User);
+
+            var connectionString = _configuration.GetConnectionString("AzureBlobStorage");
+
+            var container = _uploadService.GetBlobContainer(connectionString);
+
+            var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
+
+            var filename = contentDisposition.FileName.Trim();
+
+            var blockBlob = container.GetBlockBlobReference(filename);
+
+            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
+
+            await _userService.SetProfileImage(userId, blockBlob.Uri);
+
+            return RedirectToAction("Detail", "Profile", new { id = userId });
         }
     }
 }

@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "mssql3": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/elibrary/databases/elibforum",
-      "type": "mssql.azure",
-      "connectionId": "AplicationDbContextConnection",
-      "secretStore": "AzureAppSettings"
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "ElibForumMVCContextConnection",
+      "suggestion": "true",
+      "ignored": "true"
     },
     "mssql1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/elibrary/databases/elibforum",
@@ -12,11 +12,17 @@
       "connectionId": "DefaultConnection",
       "secretStore": "AzureAppSettings"
     },
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "ElibForumMVCContextConnection",
-      "suggestion": "true",
-      "ignored": "true"
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/elibrary/databases/elibforum",
+      "type": "mssql.azure",
+      "connectionId": "AplicationDbContextConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/elibforummvcstorage",
+      "type": "storage.azure",
+      "connectionId": "AzureBlobStorage",
+      "secretStore": "AzureAppSettings"
     }
   }
 }
