@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
 {
@@ -35,15 +36,10 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
             _userService = userService;
             _configuration = configuration;
         }
-        public string UserId { get; set; }
-        public string Email { get; set; }
-        public string UserName { get; set; }
-        public string UserRating { get; set; }
-        public string ProfileImageUrl { get; set; }
-        public bool IsAdmin { get; set; }
 
-        public DateTime MemberSince { get; set; }
-        public IFormFile ImageUpload { get; set; }
+
+        public string ProfileImageUrl { get; set; }
+
         public string Username { get; set; }
 
         [TempData]
@@ -114,27 +110,17 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
             return RedirectToPage();
         }
 
+
         public IActionResult Detail(string id)
         {
             var user = _userService.GetById(id);
-            var userRoles = _userManager.GetRolesAsync(user).Result;
 
-            var model = new ProfileModel()
-            {
+            Username = user.UserName;
+       
+            ProfileImageUrl = user.ProfileImageUrl;
 
-                UserId = user.Id,
-                UserName = user.UserName,
-                UserRating = user.Rating.ToString(),
-                Email = user.Email,
-                ProfileImageUrl = user.ProfileImageUrl,
-                MemberSince = user.MemberSince,
-                IsAdmin = userRoles.Contains("Admin")
-
-            };
             return RedirectToPage();
         }
-
-        [HttpPost]
         public async Task<IActionResult> UploadProfileImage(IFormFile file)
         {
 

@@ -1,6 +1,7 @@
 {
+  "AllowedHosts\": \"*\",": null,
+  "BlobConnections": "",
   "ConnectionStrings": {
-    "AzzureStorage": "DefaultEndpointsProtocol=https;AccountName=elibforum;AccountKey=hZqYPwHKypRi8lYkeLvB25sUT7ljbIwGRWAyxWQ2xo2ZQr+Arqef1gSXbWKy4kxGE8pPeX7R1cCnT1naQUHHcQ==;EndpointSuffix=core.windows.net"
-
+    "AzureBlobStorage": "DefaultEndpointsProtocol=https;AccountName=elibforum;AccountKey=hZqYPwHKypRi8lYkeLvB25sUT7ljbIwGRWAyxWQ2xo2ZQr+Arqef1gSXbWKy4kxGE8pPeX7R1cCnT1naQUHHcQ==;EndpointSuffix=core.windows.net"
   }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace ElibForumMVC.Controllers
 {
@@ -18,7 +19,10 @@ namespace ElibForumMVC.Controllers
         private readonly IApplicationUser _userService;
         private readonly IUpload  _uploadService;
         private readonly IConfiguration _configuration;
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService, IConfiguration configuration)
+        public ProfileController(UserManager<ApplicationUser> userManager,
+            IApplicationUser userService, 
+            IUpload uploadService,
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _userService = userService;
@@ -62,7 +66,7 @@ namespace ElibForumMVC.Controllers
 
             var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
 
-            var filename = contentDisposition.FileName.Trim();
+            var filename = contentDisposition.FileName.Trim('"');
 
             var blockBlob = container.GetBlockBlobReference(filename);
 

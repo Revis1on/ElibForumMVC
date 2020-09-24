@@ -22,9 +22,16 @@ namespace ElibForumMVC.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task AddReply(PostReply reply)
+        public async Task AddReply(PostReply reply)
         {
-            throw new NotImplementedException();
+           _context.PostReplies.Add(reply);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddReply(object reply)
+        {
+            _context.PostReplies.Add((PostReply)reply);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(int id)

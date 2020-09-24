@@ -15,5 +15,11 @@ namespace ElibForumMVC.Models.Reply
         public bool IsAuthorAdmin { get; set; }
 
         public int PostId { get; set; }
+        public string PostTitle { get; set; }
+        public string PostConten { get; set; }
+
+        public string ForumName { get; set; }
+        public string ForumImageUrl { get; set; }
+        public int ForumId { get; set; }
     }
 }

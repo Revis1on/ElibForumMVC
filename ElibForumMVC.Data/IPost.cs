@@ -18,6 +18,6 @@ namespace ElibForumMVC.Data
         Task EditPostContent(int id, string newContent);
 
         Task AddReply(PostReply reply);
-
+        Task AddReply(object reply);
     }
 }

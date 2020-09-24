@@ -15,12 +15,17 @@ namespace ElibForumMVC.Controllers
         private readonly IPost _postService;
         private readonly IForum _forumService;
         private static UserManager<ApplicationUser> _userManager;
+        private readonly IApplicationUser _userService;
 
-        public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager)
+        public PostController(IPost postService,
+            IForum forumService,
+            UserManager<ApplicationUser> userManager,
+            IApplicationUser userService)
         {
             _postService = postService;
             _forumService = forumService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public IActionResult Index(int id)
@@ -71,7 +76,7 @@ namespace ElibForumMVC.Controllers
             var post = BuildPost(model, user);
 
             _postService.Add(post).Wait(); // Block the current thread untill the task is complete
-            // TODO: Implement User Rating Management
+            await _userService.UpdateUserRating(userId, typeof(Post));
 
             return RedirectToAction("Index", "Post", new { id = post.Id });
         }

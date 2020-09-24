@@ -1,10 +1,12 @@
-﻿@using ElibForumMVC.Data.Models
+﻿
+@using ElibForumMVC.Data.Models
 @using Microsoft.AspNetCore.Identity
 @model ElibForumMVC.Models.ApplicationUser.ProfileModel
 
 @inject UserManager<ApplicationUser> UserManager
 
 @{
+    
     //var user = UserManager.FindByNameAsync(User.Identity.Name);
     //var isAdmin = user.Result.IsAdmin;
 }
@@ -23,12 +25,12 @@
             </form>
         }*@
     </div>
-    @if (Context.User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated)
     {
         <div class="row userProfile">
             <div class="col-md-4">
                 <div id="userProfileImage" style="background-image: url(@Model.ProfileImageUrl); background-size:100%;"></div>
-                @if (Context.User.Identity.Name == Model.UserName)
+                @if (User.Identity.Name == Model.UserName)
                 {
                     <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
                         <div id="upload">

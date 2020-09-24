@@ -10,6 +10,8 @@ using Azure.Storage.Queues;
 using Azure.Storage.Blobs;
 using Azure.Core.Extensions;
 using System;
+using Microsoft.AspNetCore.Identity;
+using ElibForumMVC.Data.Models;
 
 namespace ElibForumMVC
 {
@@ -26,13 +28,15 @@ namespace ElibForumMVC
         public void ConfigureServices(IServiceCollection services)
         {
 
+            
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
             services.AddScoped<IUpload, UploadService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
-
+            services.AddTransient<ApplicationUser>();
 
             services.AddTransient<DataSeeder>();
             services.AddAzureClients(builder =>
