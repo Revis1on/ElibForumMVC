@@ -12,8 +12,8 @@ namespace ElibForumMVC.Data
 {
     public  class DataSeeder
     {
-        private AplicationDbContext _context;
-        public DataSeeder(AplicationDbContext context)
+        private ApplicationDbContext _context;
+        public DataSeeder(ApplicationDbContext context)
          {
 
             _context = context;
