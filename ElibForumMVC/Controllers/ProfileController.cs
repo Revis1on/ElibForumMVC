@@ -76,7 +76,7 @@ namespace LambdaForums.Controllers
             //Connect to Azure Storage Container
             var connectionString = _configuration.GetConnectionString("AzureBlobStorage");
             //Get Blob Container
-            var container = _uploadService.GetBlobContainer(connectionString);
+            var container = _uploadService.GetBlobContainer(connectionString, "profile-image");
             //Parse the Content Disposition response header
             var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             //Grab the filename

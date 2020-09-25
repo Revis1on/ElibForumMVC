@@ -108,39 +108,7 @@ namespace ElibForumMVC.Areas.Identity.Pages.Account.Manage
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Промените беа зачувани";
             return RedirectToPage();
-        }
-
-
-        public IActionResult Detail(string id)
-        {
-            var user = _userService.GetById(id);
-
-            Username = user.UserName;
-       
-            ProfileImageUrl = user.ProfileImageUrl;
-
-            return RedirectToPage();
-        }
-        public async Task<IActionResult> UploadProfileImage(IFormFile file)
-        {
-
-            var userId = _userManager.GetUserId(User);
-
-            var connectionString = _configuration.GetConnectionString("AzureBlobStorage");
-
-            var container = _uploadService.GetBlobContainer(connectionString);
-
-            var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
-
-            var filename = contentDisposition.FileName.Trim().ToString();
-
-            var blockBlob = container.GetBlockBlobReference(filename);
-
-            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
-
-            await _userService.SetProfileImage(userId, blockBlob.Uri);
-
-            return RedirectToAction("Detail", "Profile", new { id = userId });
-        }
+        } 
+     
     }
 }

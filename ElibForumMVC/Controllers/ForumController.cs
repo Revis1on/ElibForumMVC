@@ -121,7 +121,7 @@ namespace ElibForumMVC.Controllers
         {
             var connectionString = _configuration.GetConnectionString("AzureBlobStorage");
 
-            var container = _uploadService.GetBlobContainer(connectionString);
+            var container = _uploadService.GetBlobContainer(connectionString,"forum-image");
 
             var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
 
@@ -129,7 +129,7 @@ namespace ElibForumMVC.Controllers
 
             var blockBlob = container.GetBlockBlobReference(filename);
 
-            blockBlob.UploadFromStreamAsync(file.OpenReadStream());
+            blockBlob.UploadFromStreamAsync(file.OpenReadStream()).Wait();
 
             return blockBlob;
         }
