@@ -16,12 +16,12 @@ namespace ElibForumMVC.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<AplicationDbContext>(options =>
+                services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AplicationDbContextConnection")));
 
                 services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>()
-                    .AddEntityFrameworkStores<AplicationDbContext>();
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
             });
         }
     }

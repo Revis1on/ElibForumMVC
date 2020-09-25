@@ -10,8 +10,8 @@ namespace ElibForumMVC.Services
 {
     public class PostService : IPost
     {
-        private readonly AplicationDbContext _context;
-        public PostService(AplicationDbContext context)
+        private readonly ApplicationDbContext _context;
+        public PostService(ApplicationDbContext context)
         {
             _context = context;
         }

@@ -10,16 +10,17 @@ namespace ElibForumMVC.Services
 {
     public class ForumService : IForum
     {
-        private readonly  AplicationDbContext _context;
-        public ForumService(AplicationDbContext context)
+        private readonly  ApplicationDbContext _context;
+        public ForumService(ApplicationDbContext context)
         {
             _context = context;
 
         }
 
-        public Task Create(Forum forum)
+        public async Task Create(Forum forum)
         {
-            throw new NotImplementedException();
+            _context.Add(forum);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(int forumID)

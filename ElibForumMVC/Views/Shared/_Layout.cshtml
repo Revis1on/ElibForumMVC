@@ -12,6 +12,7 @@
     <title>@ViewData["Title"]Е-Книготека</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/profle.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -25,6 +26,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav mr-auto float-right">
                         <li><a class="nav-item active nav-link" asp-area="" asp-controller="Forum" asp-action="Index">Форум</a></li>
+                                      
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="dropdown">
@@ -39,7 +41,7 @@
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-header text-dark">Кориснички Панел</li>
                                     <li role="separator" class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Moj Профил</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">Moj Профил</a></li>
 
                                     @if (User.IsInRole("Admin"))
                                     {
@@ -54,7 +56,7 @@
                             </li>
                         }
                     </ul>
-                   
+                    
                     @if (!SignInManager.IsSignedIn(User))
                     {
                 <ul class="nav navbar-nav navbar-right">
@@ -70,7 +72,7 @@
 
                     @if (SignInManager.IsSignedIn(User))
                     {
-                <form asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutFOrm" class="navbar-right">
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutFOrm" class="navbar-right">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-link text-dark">Здраво @UserManager.GetUserName(User)</li>
                         <button type="submit" class="btn btn-link text-dark font-weight-bold">Одјава</button>
