@@ -3,17 +3,20 @@
 <h1 class="mt-4">Додај нов пост во @Model.ForumName</h1>
 
 
-<form asp-action="AddPost" method="post" id="addPostForm">
+<div class="container-fluid emp-profile">
+    <form asp-action="AddPost" method="post" id="addPostForm">
 
-    <div class="form-group">
-        <label asp-for="Title">Наслов</label>
-        <input asp-for="Title" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Content">Содржина</label>
-        <textarea asp-for="Content" class="form-control"></textarea>
-    </div>
-    <button type="submit" id="SubmitPostBtn" class="btn btn-submitPost">Испрати</button>
-    <input asp-for=" ForumId" type="hidden" />
+        <div class="form-group">
+            <label asp-for="Title">Наслов</label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Content">Содржина</label>
+            <textarea asp-for="Content" class="form-control"></textarea>
+        </div>
+        <button type="submit" id="SubmitPostBtn" class="btn btn-submitPost">Испрати</button>
+        <input asp-for=" ForumId" type="hidden" />
 
-</form>
+    </form>
+</div>
+

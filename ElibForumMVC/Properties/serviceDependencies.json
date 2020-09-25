@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "mssql3": {
-      "type": "mssql",
-      "connectionId": "AplicationDbContextConnection"
-    },
     "storage1": {
       "type": "storage",
       "connectionId": "AzureBlobStorage"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "AplicationDbContextConnection"
     }
   }
 }

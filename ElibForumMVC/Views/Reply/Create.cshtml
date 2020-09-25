@@ -1,0 +1,51 @@
+﻿@model ElibForumMVC.Models.Reply.PostReplyModel
+
+
+<div class="container-fluid emp-profile">
+    <div class="row border-bottom box-shadow">
+        <div class="row" >
+           <h4> Одговор на @Model.PostTitle </h4>
+        </div>
+        <div class="img-fluid float-right" style="background-image: url(@Model.ForumImageUrl)"></div>
+        <span id="headingBtn">
+            <a asp-controller="Post"
+               asp-action="Index"
+               asp-route-id="@Model.PostId"></a>
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-lg-auto" id="postReply">
+            <h5>
+                @Model.PostTitle
+            </h5>
+            <p>
+                @Model.PostConten
+            </p>
+        </div>
+    </div>
+
+        <div class="col-lg-auto" id="CreateReply">
+
+            <form asp-action="AddReply" method="post" id="addPostForm">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ReplyContent">Одговор:</label>
+                    <textarea asp-for="ReplyContent" class="form-control" placeholder="Твојот одговор:..."></textarea>
+                    <span asp-validation-for="ReplyContent" class="text-danger"></span>
+                </div>
+                <div class="authorBlock">
+                    <h7>Ти го испраќаш овај одговор како @Model.AuthorName</h7>
+                </div>
+                <button type="submit" id="submitReplyBtn" class="btn btn-success">Испрати Одговор</button>
+                <input asp-for="AuthorId" type="hidden" />
+                <input asp-for="PostId" type="hidden" />
+                <input asp-for="ForumId" type="hidden" />
+            </form>
+
+        </div>
+  
+
+
+
+</div>
+

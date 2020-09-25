@@ -6,6 +6,8 @@ using ElibForumMVC.Models.ApplicationUser;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 
 namespace LambdaForums.Controllers
 {
@@ -14,12 +16,16 @@ namespace LambdaForums.Controllers
         private readonly UserManager<ApplicationUser> _userManager; //Provided by Microsoft.AspNetCore.Identity
         private readonly IApplicationUser _userService;
         private readonly IUpload _uploadService; //To upload profile image to the cloud
-
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService)
+        private readonly IConfiguration _configuration;
+        public ProfileController(UserManager<ApplicationUser> userManager,
+            IApplicationUser userService,
+            IUpload uploadService,
+            IConfiguration configuration)
         {
             this._userManager = userManager;
             this._userService = userService;
             this._uploadService = uploadService;
+            this._configuration = configuration;
         }
 
         public IActionResult Detail(string id)
@@ -66,19 +72,23 @@ namespace LambdaForums.Controllers
         {
             var userId = _userManager.GetUserId(User);
 
+
             //Connect to Azure Storage Container
+            var connectionString = _configuration.GetConnectionString("AzureBlobStorage");
             //Get Blob Container
-
+            var container = _uploadService.GetBlobContainer(connectionString);
             //Parse the Content Disposition response header
+            var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             //Grab the filename
-
+            var filename = contentDisposition.FileName.Trim().ToString();
             //Get a reference to a Block Blob
+            var blockBlob = container.GetBlockBlobReference(filename);
             //On that block blob, upload our file
-
+            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
             //Set the user's profile image to the received URI
-
+            await _userService.SetProfileImage(userId, blockBlob.Uri);
             //Redirect to user's profile page
-            return null;
+            return RedirectToAction("Detail", "Profile", new { id = userId });
         }
     }
 }

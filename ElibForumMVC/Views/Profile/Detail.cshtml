@@ -8,79 +8,82 @@
 
 @{
 
-    //var user = UserManager.FindByNameAsync(User.Identity.Name);
-    //var isAdmin = user.Result.IsAdmin;
+//var user = UserManager.FindByNameAsync(User.Identity.Name);
+//var isAdmin = user.Result.IsAdmin;
 }
 
 <div class="container emp-profile">
-    <form method="post">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img" style="background-image: url(@Model.ProfileImageUrl); background-size:100%;"></div>
-                @if (Context.User.Identity.Name == Model.UserName)
+    <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
+      
+        {<div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img" id="userProfileImage" style="background-image: url(@Model.ProfileImageUrl); background-size:100%;"></div>
+                    @if (Context.User.Identity.Name == Model.UserName)
+                    {
+                        
+                            <div id="upload">
+                                <label class="btn btn-info">
+                                    Отвори <input type="file" name="file" style="display: none;">
+                                </label>
+                            </div>
+                            <button type="submit" id="btn-profile" class="btn btn-success">Испрати</button>
+                   
+                    }
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            @Model.UserName
+                        </h5>
+                        <p class="proile-rating">Рејтинг : <span> @Model.UserRating</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Информации за корисникот</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                @if (SignInManager.IsSignedIn(User))
                 {
-                    <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
-                        <div id="upload">
-                            <label class="btn btn-info">
-                                Отвори <input type="file" name="file" style="display: none;">
-                            </label>
-                        </div>
-                        <button type="submit" id="btn-profile" class="btn btn-success">Испрати</button>
-                    </form>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Опции" asp-area="Identity" asp-page="/Account/Index" />
+                    </div>
                 }
-            </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <h5>
-                        @Model.UserName
-                    </h5>
-                    <p class="proile-rating">Рејтинг : <span> @Model.UserRating</span></p>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Информации за корисникот</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Опции" asp-area="Identity" asp-page="/Account/Index" />
-                </div>
-            }
 
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Корисник ИД</label>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Корисник ИД</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.UserName</p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>@Model.UserName</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Е-Пошта</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.Email</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Е-Пошта</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.Email</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Зачленет од</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.MemberSince</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Зачленет од</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.MemberSince</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
+
     </form>
 </div>

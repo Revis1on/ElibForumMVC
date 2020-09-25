@@ -13,7 +13,7 @@ namespace ElibForumMVC.Services
         {
             var storageAccount = CloudStorageAccount.Parse(connectionString);
             var blobClient = storageAccount.CreateCloudBlobClient();
-            return blobClient.GetContainerReference("profile-images");
+            return blobClient.GetContainerReference("profile-image");
         }
     }
 
