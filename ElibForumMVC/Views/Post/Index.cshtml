@@ -7,7 +7,7 @@
                 @Model.Title
             </span>
                 <span class="mr-5">
-                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@Model.ForumId" class="btn btn-info">Назад</a>
+                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@Model.ForumId" class="btn btn-info float-right" >Назад</a>
                 </span>
         </div>
     </div>
@@ -16,9 +16,9 @@
         <div class="col-md-3 postAuthorContainer">
             <div class="postAuthorImage" style="background-image: url(@Model.AuthorImageUrl);"></div>
             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
-                @Model.AuthorName
+              @Model.AuthorName
             </a>
-            <span class="postData">@Model.DateCreated</span>
+            <span class="postData"> @Model.DateCreated </span>
             @if (Model.IsAuthorAdmin)
             {
 <span class="isAdmin smaller">Админ</span>            }
@@ -45,7 +45,7 @@
     {
         foreach (var reply in Model.Replies)
         {
-<div class="row replyContent">
+<div class="row mt-3" id="postIndexContent" >
     <div class="col-md-3 postAuthorContainer">
         <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl)"></div>
         <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
@@ -57,7 +57,7 @@
                         <br />                    }
         <span>@reply.Created</span>
     </div>
-    <div class="col-md-9 replyContentContainer">
+    <div class="col-md-9 postContentContainer">
         <div class="postContent">
             @Html.Raw(reply.ReplyContent)
         </div>

@@ -170,17 +170,26 @@
 }
 
 .postAuthorImage {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     background-size: 100%
 }
 
 .postAuthorContainer {
+    padding: 10px;
+    color: #444;
+    font-family: 'Roboto';
+    width: 170px;
+}
+.replyAuthorContainer {
     padding: 12px;
     color: #444;
     font-family: 'Roboto';
     width: 190px;
 }
+
+
+
 
 .postIndexTitle {
     font-size: 1.4em;
@@ -376,6 +385,19 @@
     font-size: 1.7em;
 }
 
+.isAdmin{
+    display:inline-block;
+    padding: 3px;
+    background-color: #FFEB3B;
+    color:#000;
+    font-family:'Roboto Mono'
+}
+
+.smaller{
+
+    font-size: 0.8em;
+}
+
 /*Create post*/
 .createPostSection {
     background-color: #fff;
@@ -523,8 +545,8 @@
     color: #0062cc;
 }
 
-.replyContent{
-    display: table;
+.replyContentContainer{
+
     background-color:white;
     border-bottom: 1px solid #aaa;
     width: inherit;
