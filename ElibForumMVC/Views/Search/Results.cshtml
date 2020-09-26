@@ -9,9 +9,9 @@
             <span>Резултати за @Model.SearchQuery</span>
 
             <form asp-controller="Search" asp-action="Search" method="post">
-                <div class="searchForm">
-                    <input asp-for="SearchQuery" type="text" placeholder="Барај..." class="searchBar" onfocus="clearThis(this)" />
-                    <button type="submit" class="btn btn-forumSearch">
+                <div class="searchForm text-white">
+                    <input asp-for="SearchQuery" type="text" placeholder="Барај..."  onfocus="clearThis(this)" />
+                    <button type="submit" class="btn btn-info">
                         <i class="material-icons">search</i>
                     </button>
                 </div>

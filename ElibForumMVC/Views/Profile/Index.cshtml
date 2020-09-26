@@ -2,7 +2,7 @@
 
 <div class="container body-content">
     <div class="row sectionHeader">
-        <div class="sectionHeading">Browse Users</div>
+        <div class="sectionHeading">Корисници</div>
     </div>
     <div class="row" id="forumIndexContent">
         <table class="table table-hover" id="forumIndexTable">
@@ -18,7 +18,7 @@
                         Член од
                     </th>
                     <th>
-                        Емаил
+                        E-Пошта
                     </th>
                     <th>
                         Кориснички Рејтинг
@@ -30,18 +30,12 @@
                 {
                     <tr class="userRow">
                         <td>
-                            <div class="userProfilePic" style="background-image: url(@profile.ProfileImageUrl); background-size:100%"></div>
+                            <div class="profile-img" id="userProfileImage" style="background-image: url(@profile.ProfileImageUrl); background-size:100%"></div>
                         </td>
                         <td>
-                            <span>Активен</span>
-                            @*@if (profile.IsActive)
-                            {
-                                <span>Active</span>
-                            }
-                            else
-                            {
-                                <span class="inactiveUser">Inactive</span>
-                            }*@
+                            <a asp-controller="Profile" asp-action="Detail" , asp-route-id="@profile.UserId">
+                                @profile.UserName
+                            </a>
                         </td>
                         <td>
                             @profile.MemberSince
@@ -50,9 +44,7 @@
                             @profile.Email
                         </td>
                         <td>
-                            <a asp-controller="Profile" asp-action="Detail" , asp-route-id="@profile.UserId">
-                                @profile.UserName
-                            </a>
+                        
                         </td>
                         <td>
                             @profile.UserRating
